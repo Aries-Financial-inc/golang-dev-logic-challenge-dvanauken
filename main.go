@@ -1,17 +1,19 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
+	"golang-dev-logic-challenge-dvanauken/routes"
 )
 
+//func main() {
+//	http.HandleFunc("/analyze", controllers.AnalysisHandler) // Use AnalysisHandler from the controllers package
+//
+//	fmt.Println("Starting server on port 8080")
+//	http.ListenAndServe(":8080", nil) // Start the server on port 8080
+//}
+
 func main() {
-	http.HandleFunc("/analyze", analyzeHandler)
-
+	router := routes.SetupRouter()
 	fmt.Println("Starting server on port 8080")
-	http.ListenAndServe(":8080", nil)
-}
-
-func analyzeHandler(w http.ResponseWriter, r *http.Request) {
-	// Your code here
+	router.Run(":8080")
 }
